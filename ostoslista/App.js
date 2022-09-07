@@ -1,20 +1,73 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Button, Alert, TextInput, Image, SafeAreaView } from 'react-native';
 
-export default function App() {
+const App = () => {
+  
+  const [text, onChangeText] = React.useState();
+  const [number, onChangeNumber] = React.useState(null);
+
+  
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View>
+      <Text style={styles.title}>
+        
+      </Text>
+      <View style={styles.fixToText}>
+        <Button
+          title="+"
+          onPress={() => Alert.alert('Left button pressed')}
+        />
+        <Button
+          title="-"
+          onPress={() => Alert.alert('Right button pressed')}
+        />
+      </View>
+    
+    
+    <SafeAreaView>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+        keyboardType="numeric"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeNumber}
+        value={number}
+        placeholder=""
+        keyboardType="numeric"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeText}
+        value={text}
+        keyboardType="numeric"
+      />
+    </SafeAreaView>
     </View>
   );
-}
+};
+
 
 const styles = StyleSheet.create({
-  container: {
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+  screenContainer: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
+    padding: 16
+  },
+  fixToText: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
   },
 });
+
+export default App;
